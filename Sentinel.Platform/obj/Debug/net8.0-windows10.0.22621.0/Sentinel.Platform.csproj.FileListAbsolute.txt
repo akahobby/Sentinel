@@ -1,0 +1,15 @@
+C:\Users\Administrator\Documents\Sentinal\Sentinel.Platform\bin\Debug\net8.0-windows10.0.22621.0\Sentinel.Platform.deps.json
+C:\Users\Administrator\Documents\Sentinal\Sentinel.Platform\bin\Debug\net8.0-windows10.0.22621.0\Sentinel.Platform.dll
+C:\Users\Administrator\Documents\Sentinal\Sentinel.Platform\bin\Debug\net8.0-windows10.0.22621.0\Sentinel.Platform.pdb
+C:\Users\Administrator\Documents\Sentinal\Sentinel.Platform\bin\Debug\net8.0-windows10.0.22621.0\Sentinel.Core.dll
+C:\Users\Administrator\Documents\Sentinal\Sentinel.Platform\bin\Debug\net8.0-windows10.0.22621.0\Sentinel.Core.pdb
+C:\Users\Administrator\Documents\Sentinal\Sentinel.Platform\obj\Debug\net8.0-windows10.0.22621.0\Sentinel.Platform.csproj.AssemblyReference.cache
+C:\Users\Administrator\Documents\Sentinal\Sentinel.Platform\obj\Debug\net8.0-windows10.0.22621.0\Sentinel.Platform.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Administrator\Documents\Sentinal\Sentinel.Platform\obj\Debug\net8.0-windows10.0.22621.0\Sentinel.Platform.AssemblyInfoInputs.cache
+C:\Users\Administrator\Documents\Sentinal\Sentinel.Platform\obj\Debug\net8.0-windows10.0.22621.0\Sentinel.Platform.AssemblyInfo.cs
+C:\Users\Administrator\Documents\Sentinal\Sentinel.Platform\obj\Debug\net8.0-windows10.0.22621.0\Sentinel.Platform.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Documents\Sentinal\Sentinel.Platform\obj\Debug\net8.0-windows10.0.22621.0\Sentinel.713022D9.Up2Date
+C:\Users\Administrator\Documents\Sentinal\Sentinel.Platform\obj\Debug\net8.0-windows10.0.22621.0\Sentinel.Platform.dll
+C:\Users\Administrator\Documents\Sentinal\Sentinel.Platform\obj\Debug\net8.0-windows10.0.22621.0\refint\Sentinel.Platform.dll
+C:\Users\Administrator\Documents\Sentinal\Sentinel.Platform\obj\Debug\net8.0-windows10.0.22621.0\Sentinel.Platform.pdb
+C:\Users\Administrator\Documents\Sentinal\Sentinel.Platform\obj\Debug\net8.0-windows10.0.22621.0\ref\Sentinel.Platform.dll

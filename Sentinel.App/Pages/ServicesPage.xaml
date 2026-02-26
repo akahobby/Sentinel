@@ -1,0 +1,62 @@
+<Page
+    x:Class="Sentinel.App.Pages.ServicesPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:Microsoft.UI.Xaml.Controls"
+    xmlns:models="using:Sentinel.Core.Models"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Padding="24,20" Spacing="10">
+            <TextBlock Text="Services" Style="{StaticResource TitleTextStyle}" />
+            <TextBlock Text="Windows services. Start, stop, and change start type. Administrator rights may be required for some actions." Style="{StaticResource CaptionTextStyle}" TextWrapping="Wrap" />
+            <StackPanel Orientation="Horizontal" Spacing="12">
+                <ProgressRing IsActive="{Binding IsLoading}" Width="24" Height="24" VerticalAlignment="Center" />
+            </StackPanel>
+            <TextBlock Text="{Binding StatusText}" Style="{StaticResource BodyTextStyle}" />
+        </StackPanel>
+
+        <Grid Grid.Row="1" Margin="24,0,24,24">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" MinWidth="200" />
+                <ColumnDefinition Width="16" />
+                <ColumnDefinition Width="1*" MinWidth="220" />
+            </Grid.ColumnDefinitions>
+
+            <controls:ListView x:Name="ServicesList" ItemsSource="{Binding Services}"
+                SelectedItem="{Binding SelectedService, Mode=TwoWay}"
+                SelectionMode="Single">
+                <controls:ListView.ItemTemplate>
+                    <DataTemplate x:DataType="models:ServiceInfo">
+                        <StackPanel Padding="8" Spacing="2">
+                            <TextBlock Text="{x:Bind DisplayName}" FontWeight="SemiBold" TextTrimming="CharacterEllipsis" />
+                            <TextBlock Text="{x:Bind Name}" Style="{StaticResource CaptionTextStyle}" />
+                            <TextBlock Style="{StaticResource CaptionTextStyle}">
+                                <Run Text="{x:Bind Status}" /><Run Text=" · " /><Run Text="{x:Bind StartType}" />
+                            </TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </controls:ListView.ItemTemplate>
+            </controls:ListView>
+
+            <Border Grid.Column="2" Background="{StaticResource CardBackgroundBrush}" CornerRadius="{StaticResource CornerRadiusCard}" Padding="20" BorderBrush="{StaticResource CardBorderBrush}" BorderThickness="1">
+                <StackPanel Spacing="14">
+                    <TextBlock Text="Details" Style="{StaticResource SectionTextStyle}" />
+                    <TextBlock x:Name="DetailsName" Text="{Binding SelectedService.DisplayName, FallbackValue='Select a service'}" Style="{StaticResource BodyTextStyle}" TextWrapping="Wrap" />
+                    <TextBlock x:Name="DetailsStatus" Text="{Binding SelectedService.Status, FallbackValue='-'}" Style="{StaticResource CaptionTextStyle}" />
+                    <TextBlock x:Name="DetailsStartType" Text="{Binding SelectedService.StartType, FallbackValue='-'}" Style="{StaticResource CaptionTextStyle}" />
+                    <TextBlock x:Name="DetailsPath" Text="{Binding SelectedService.BinaryPath, FallbackValue='-'}" Style="{StaticResource CaptionTextStyle}" TextWrapping="Wrap" MaxLines="3" />
+                    <StackPanel Orientation="Horizontal" Spacing="8" Margin="0,8,0,0">
+                        <Button Content="Start" Command="{Binding StartServiceCommand}" CommandParameter="{Binding SelectedService}" />
+                        <Button Content="Stop" Command="{Binding StopServiceCommand}" CommandParameter="{Binding SelectedService}" />
+                        <Button Content="Change start type" Command="{Binding SetStartTypeCommand}" CommandParameter="{Binding SelectedService}" ToolTipService.ToolTip="Requires administrator rights if you see an error. Use Settings → Relaunch as Admin." />
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Grid>
+</Page>

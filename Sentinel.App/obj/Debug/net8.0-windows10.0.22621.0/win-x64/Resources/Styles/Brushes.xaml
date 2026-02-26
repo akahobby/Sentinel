@@ -1,0 +1,23 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- WinUI control theme fallbacks (NavigationView etc. expect these) -->
+    <SolidColorBrush x:Key="TabViewButtonBackground" Color="Transparent" />
+    <SolidColorBrush x:Key="TabViewButtonForeground" Color="#E0E0E0" />
+
+    <!-- Card / surface – slightly lighter for better contrast -->
+    <SolidColorBrush x:Key="CardBackgroundBrush" Color="#333333" />
+    <SolidColorBrush x:Key="CardBorderBrush" Color="#4A4A4A" />
+
+    <!-- Severity -->
+    <SolidColorBrush x:Key="SeverityOkBrush" Color="#4CAF50" />
+    <SolidColorBrush x:Key="SeverityWarnBrush" Color="#FF9800" />
+    <SolidColorBrush x:Key="SeverityFailBrush" Color="#F44336" />
+    <SolidColorBrush x:Key="SeverityInfoBrush" Color="#2196F3" />
+
+    <!-- Subtle text – brighter for readability -->
+    <SolidColorBrush x:Key="SubtleTextBrush" Color="#B8B8B8" />
+    <SolidColorBrush x:Key="MutedBrush" Color="#888888" />
+</ResourceDictionary>
+

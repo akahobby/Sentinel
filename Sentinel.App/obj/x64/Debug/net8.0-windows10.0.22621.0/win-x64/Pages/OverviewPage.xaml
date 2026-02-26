@@ -1,0 +1,232 @@
+﻿<Page
+    x:Class="Sentinel.App.Pages.OverviewPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:Microsoft.UI.Xaml.Controls"
+    xmlns:models="using:Sentinel.Core.Models"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <ScrollViewer>
+        <StackPanel Padding="28,24" Spacing="28">
+            <!-- Header -->
+            <StackPanel Spacing="6">
+                <TextBlock Text="Overview" Style="{StaticResource TitleTextStyle}" />
+                <TextBlock Text="Live performance and system health at a glance." Style="{StaticResource CaptionTextStyle}" TextWrapping="Wrap" />
+            </StackPanel>
+
+            <!-- Wintoys-style: System info cards (2 rows of 4) -->
+            <StackPanel Spacing="12">
+                <TextBlock Text="System" Style="{StaticResource SectionTextStyle}" />
+                <Grid RowSpacing="12" ColumnSpacing="12">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <!-- Row 1 -->
+                    <Border Grid.Row="0" Grid.Column="0" Background="{StaticResource CardBackgroundBrush}" CornerRadius="8" Padding="14" BorderBrush="{StaticResource CardBorderBrush}" BorderThickness="1">
+                        <StackPanel Spacing="6">
+                            <FontIcon Glyph="&#xE770;" FontSize="14" Foreground="{StaticResource SubtleTextBrush}" />
+                            <TextBlock Text="System" Style="{StaticResource CaptionTextStyle}" Foreground="{StaticResource SubtleTextBrush}" />
+                            <TextBlock Text="{Binding SystemName}" FontWeight="SemiBold" TextTrimming="CharacterEllipsis" />
+                        </StackPanel>
+                    </Border>
+                    <Border Grid.Row="0" Grid.Column="1" Background="{StaticResource CardBackgroundBrush}" CornerRadius="8" Padding="14" BorderBrush="{StaticResource CardBorderBrush}" BorderThickness="1">
+                        <StackPanel Spacing="6">
+                            <FontIcon Glyph="&#xE950;" FontSize="14" Foreground="{StaticResource SubtleTextBrush}" />
+                            <TextBlock Text="Processor" Style="{StaticResource CaptionTextStyle}" Foreground="{StaticResource SubtleTextBrush}" />
+                            <TextBlock Text="{Binding ProcessorName}" FontWeight="SemiBold" TextTrimming="CharacterEllipsis" MaxLines="2" />
+                        </StackPanel>
+                    </Border>
+                    <Border Grid.Row="0" Grid.Column="2" Background="{StaticResource CardBackgroundBrush}" CornerRadius="8" Padding="14" BorderBrush="{StaticResource CardBorderBrush}" BorderThickness="1">
+                        <StackPanel Spacing="6">
+                            <FontIcon Glyph="&#xE96A;" FontSize="14" Foreground="{StaticResource SubtleTextBrush}" />
+                            <TextBlock Text="Graphics" Style="{StaticResource CaptionTextStyle}" Foreground="{StaticResource SubtleTextBrush}" />
+                            <TextBlock Text="{Binding GraphicsName}" FontWeight="SemiBold" TextTrimming="CharacterEllipsis" MaxLines="2" />
+                        </StackPanel>
+                    </Border>
+                    <Border Grid.Row="0" Grid.Column="3" Background="{StaticResource CardBackgroundBrush}" CornerRadius="8" Padding="14" BorderBrush="{StaticResource CardBorderBrush}" BorderThickness="1">
+                        <StackPanel Spacing="6">
+                            <FontIcon Glyph="&#xE8E6;" FontSize="14" Foreground="{StaticResource SubtleTextBrush}" />
+                            <TextBlock Text="Memory" Style="{StaticResource CaptionTextStyle}" Foreground="{StaticResource SubtleTextBrush}" />
+                            <TextBlock Text="{Binding MemoryGb}" FontWeight="SemiBold" />
+                        </StackPanel>
+                    </Border>
+                    <!-- Row 2: Storage, Windows, Up time (no Performance - it's in the graphs below) -->
+                    <Border Grid.Row="1" Grid.Column="0" Background="{StaticResource CardBackgroundBrush}" CornerRadius="8" Padding="14" BorderBrush="{StaticResource CardBorderBrush}" BorderThickness="1">
+                        <StackPanel Spacing="6">
+                            <FontIcon Glyph="&#xE8B7;" FontSize="14" Foreground="{StaticResource SubtleTextBrush}" />
+                            <TextBlock Text="Storage" Style="{StaticResource CaptionTextStyle}" Foreground="{StaticResource SubtleTextBrush}" />
+                            <TextBlock Text="{Binding StorageGb}" FontWeight="SemiBold" />
+                        </StackPanel>
+                    </Border>
+                    <Border Grid.Row="1" Grid.Column="1" Background="{StaticResource CardBackgroundBrush}" CornerRadius="8" Padding="14" BorderBrush="{StaticResource CardBorderBrush}" BorderThickness="1">
+                        <StackPanel Spacing="6">
+                            <FontIcon Glyph="&#xE80F;" FontSize="14" Foreground="{StaticResource SubtleTextBrush}" />
+                            <TextBlock Text="Windows" Style="{StaticResource CaptionTextStyle}" Foreground="{StaticResource SubtleTextBrush}" />
+                            <TextBlock Text="{Binding WindowsVersion}" FontWeight="SemiBold" />
+                        </StackPanel>
+                    </Border>
+                    <Border Grid.Row="1" Grid.Column="2" Background="{StaticResource CardBackgroundBrush}" CornerRadius="8" Padding="14" BorderBrush="{StaticResource CardBorderBrush}" BorderThickness="1">
+                        <StackPanel Spacing="6">
+                            <FontIcon Glyph="&#xE823;" FontSize="14" Foreground="{StaticResource SubtleTextBrush}" />
+                            <TextBlock Text="Up time" Style="{StaticResource CaptionTextStyle}" Foreground="{StaticResource SubtleTextBrush}" />
+                            <TextBlock Text="{Binding UpTimeFormatted}" FontWeight="SemiBold" />
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </StackPanel>
+
+            <!-- Summary: Apps, Processes, Services -->
+            <StackPanel Spacing="12">
+                <TextBlock Text="Summary" Style="{StaticResource SectionTextStyle}" />
+                <Grid ColumnSpacing="12">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Border Grid.Column="0" Background="{StaticResource CardBackgroundBrush}" CornerRadius="8" Padding="14" BorderBrush="{StaticResource CardBorderBrush}" BorderThickness="1">
+                        <StackPanel Spacing="6">
+                            <FontIcon Glyph="&#xE8A1;" FontSize="14" Foreground="{StaticResource SubtleTextBrush}" />
+                            <TextBlock Text="Apps" Style="{StaticResource CaptionTextStyle}" Foreground="{StaticResource SubtleTextBrush}" />
+                            <TextBlock Text="{Binding AppsCount}" FontSize="20" FontWeight="SemiBold" />
+                        </StackPanel>
+                    </Border>
+                    <Border Grid.Column="1" Background="{StaticResource CardBackgroundBrush}" CornerRadius="8" Padding="14" BorderBrush="{StaticResource CardBorderBrush}" BorderThickness="1">
+                        <StackPanel Spacing="6">
+                            <FontIcon Glyph="&#xE8FD;" FontSize="14" Foreground="{StaticResource SubtleTextBrush}" />
+                            <TextBlock Text="Processes" Style="{StaticResource CaptionTextStyle}" Foreground="{StaticResource SubtleTextBrush}" />
+                            <TextBlock Text="{Binding ProcessesCount}" FontSize="20" FontWeight="SemiBold" />
+                        </StackPanel>
+                    </Border>
+                    <Border Grid.Column="2" Background="{StaticResource CardBackgroundBrush}" CornerRadius="8" Padding="14" BorderBrush="{StaticResource CardBorderBrush}" BorderThickness="1">
+                        <StackPanel Spacing="6">
+                            <FontIcon Glyph="&#xE713;" FontSize="14" Foreground="{StaticResource SubtleTextBrush}" />
+                            <TextBlock Text="Services" Style="{StaticResource CaptionTextStyle}" Foreground="{StaticResource SubtleTextBrush}" />
+                            <TextBlock Text="{Binding ServicesCount}" FontSize="20" FontWeight="SemiBold" />
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </StackPanel>
+
+            <!-- Performance graphs: CPU, Memory, GPU, Network -->
+            <StackPanel Spacing="16">
+                <TextBlock Text="Performance" Style="{StaticResource SectionTextStyle}" />
+                <Grid ColumnSpacing="20" RowSpacing="20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <!-- CPU -->
+                    <Border Grid.Row="0" Grid.Column="0" Background="{StaticResource CardBackgroundBrush}" CornerRadius="12" Padding="20" BorderBrush="{StaticResource CardBorderBrush}" BorderThickness="1">
+                        <StackPanel Spacing="12">
+                            <TextBlock Text="CPU" FontSize="16" FontWeight="SemiBold" Foreground="{StaticResource SubtleTextBrush}" />
+                            <ProgressBar Value="{Binding LiveCpuPercent, Mode=OneWay}" Maximum="100" Height="12" Foreground="#4FC3F7" />
+                            <TextBlock FontSize="20" FontWeight="SemiBold">
+                                <Run Text="{Binding LiveCpuPercent, Mode=OneWay}" /><Run Text="%" />
+                            </TextBlock>
+                            <Border Height="52" Margin="0,8,0,0">
+                                <ItemsControl ItemsSource="{Binding CpuGraphPixels}" HorizontalAlignment="Stretch" VerticalAlignment="Bottom">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" />
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate                      >
+                                            <Border x:ConnectionId='9' Width="3"                   VerticalAlignment="Bottom" Margin="0,0,1,0" Background="#4FC3F7" Opacity="0.8" CornerRadius="1" />
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </Border>
+                        </StackPanel>
+                    </Border>
+                    <!-- Memory -->
+                    <Border Grid.Row="0" Grid.Column="1" Background="{StaticResource CardBackgroundBrush}" CornerRadius="12" Padding="20" BorderBrush="{StaticResource CardBorderBrush}" BorderThickness="1">
+                        <StackPanel Spacing="12">
+                            <TextBlock Text="Memory" FontSize="16" FontWeight="SemiBold" Foreground="{StaticResource SubtleTextBrush}" />
+                            <ProgressBar Value="{Binding LiveMemoryPercent, Mode=OneWay}" Maximum="100" Height="12" Foreground="#81C784" />
+                            <TextBlock FontSize="20" FontWeight="SemiBold">
+                                <Run Text="{Binding LiveMemoryPercent, Mode=OneWay}" /><Run Text="%" />
+                            </TextBlock>
+                            <Border Height="52" Margin="0,8,0,0">
+                                <ItemsControl ItemsSource="{Binding MemoryGraphPixels}" HorizontalAlignment="Stretch" VerticalAlignment="Bottom">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" />
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate                      >
+                                            <Border x:ConnectionId='7' Width="3"                   VerticalAlignment="Bottom" Margin="0,0,1,0" Background="#81C784" Opacity="0.8" CornerRadius="1" />
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </Border>
+                        </StackPanel>
+                    </Border>
+                    <!-- GPU -->
+                    <Border Grid.Row="1" Grid.Column="0" Background="{StaticResource CardBackgroundBrush}" CornerRadius="12" Padding="20" BorderBrush="{StaticResource CardBorderBrush}" BorderThickness="1">
+                        <StackPanel Spacing="12">
+                            <TextBlock Text="GPU" FontSize="16" FontWeight="SemiBold" Foreground="{StaticResource SubtleTextBrush}" />
+                            <ProgressBar Value="{Binding LiveGpuPercent, Mode=OneWay}" Maximum="100" Height="12" Foreground="#BA68C8" />
+                            <TextBlock FontSize="20" FontWeight="SemiBold">
+                                <Run Text="{Binding LiveGpuPercent, Mode=OneWay}" /><Run Text="%" />
+                            </TextBlock>
+                            <Border Height="52" Margin="0,8,0,0">
+                                <ItemsControl ItemsSource="{Binding GpuGraphPixels}" HorizontalAlignment="Stretch" VerticalAlignment="Bottom">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" />
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate                      >
+                                            <Border x:ConnectionId='5' Width="3"                   VerticalAlignment="Bottom" Margin="0,0,1,0" Background="#BA68C8" Opacity="0.8" CornerRadius="1" />
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </Border>
+                        </StackPanel>
+                    </Border>
+                    <!-- Network -->
+                    <Border Grid.Row="1" Grid.Column="1" Background="{StaticResource CardBackgroundBrush}" CornerRadius="12" Padding="20" BorderBrush="{StaticResource CardBorderBrush}" BorderThickness="1">
+                        <StackPanel Spacing="12">
+                            <TextBlock Text="Network" FontSize="16" FontWeight="SemiBold" Foreground="{StaticResource SubtleTextBrush}" />
+                            <ProgressBar Value="{Binding LiveNetworkKbps, Mode=OneWay}" Maximum="500" Height="12" Foreground="#64B5F6" />
+                            <TextBlock FontSize="20" FontWeight="SemiBold">
+                                <Run Text="{Binding LiveNetworkKbps, Mode=OneWay}" /><Run Text=" Kbps" />
+                            </TextBlock>
+                            <Border Height="52" Margin="0,8,0,0">
+                                <ItemsControl ItemsSource="{Binding NetworkGraphPixels}" HorizontalAlignment="Stretch" VerticalAlignment="Bottom">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" />
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate                      >
+                                            <Border x:ConnectionId='3' Width="3"                   VerticalAlignment="Bottom" Margin="0,0,1,0" Background="#64B5F6" Opacity="0.8" CornerRadius="1" />
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </Border>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </StackPanel>
+
+        </StackPanel>
+    </ScrollViewer>
+</Page>
+
