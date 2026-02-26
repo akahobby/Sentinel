@@ -1,6 +1,6 @@
 use crate::commands;
 
-pub fn handler<R: tauri::Runtime>() -> impl Fn(tauri::ipc::Invoke<R>) + Send + Sync + 'static {
+pub fn handler<R: tauri::Runtime>() -> impl Fn(tauri::ipc::Invoke<R>) -> bool + Send + Sync + 'static {
     tauri::generate_handler![
         commands::process::list_processes,
         commands::process::get_process_details,

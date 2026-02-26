@@ -1,5 +1,7 @@
 use serde::{Deserialize, Serialize};
 use std::path::Path;
+
+#[cfg(target_os = "windows")]
 use tokio::process::Command;
 
 #[derive(Debug, Clone, Serialize, Deserialize, Default)]
@@ -114,6 +116,7 @@ async fn get_signature_windows(path: &str) -> TrustMetadata {
     TrustMetadata { signed, publisher }
 }
 
+#[cfg(target_os = "windows")]
 fn subject_cn(subject: &str) -> Option<String> {
     let token = "CN=";
     let idx = subject.find(token)?;

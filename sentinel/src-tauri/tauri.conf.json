@@ -25,6 +25,7 @@
   "bundle": {
     "active": true,
     "targets": ["app"],
+    "icon": [],
     "windows": {
       "digestAlgorithm": "sha256",
       "timestampUrl": ""

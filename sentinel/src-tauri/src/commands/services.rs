@@ -1,10 +1,13 @@
-use crate::commands::trust;
 use crate::state::{AppState, ChangeEvent};
 use chrono::Utc;
 use serde::Serialize;
 use tauri::State;
-use tokio::process::Command;
 use tokio::task;
+
+#[cfg(target_os = "windows")]
+use crate::commands::trust;
+#[cfg(target_os = "windows")]
+use tokio::process::Command;
 
 #[derive(Debug, Clone, Serialize)]
 #[serde(rename_all = "camelCase")]
@@ -90,6 +93,7 @@ pub async fn service_action(
     }
 }
 
+#[cfg(target_os = "windows")]
 fn parse_binary_path(path: &str) -> Option<String> {
     let trimmed = path.trim();
     if trimmed.is_empty() {

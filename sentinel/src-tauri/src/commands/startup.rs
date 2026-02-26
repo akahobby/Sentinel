@@ -1,10 +1,13 @@
-use crate::commands::trust;
 use crate::state::{AppState, ChangeEvent};
 use chrono::Utc;
 use serde::Serialize;
-use std::path::{Path, PathBuf};
 use tauri::State;
 use tokio::task;
+
+#[cfg(target_os = "windows")]
+use crate::commands::trust;
+#[cfg(target_os = "windows")]
+use std::path::{Path, PathBuf};
 
 #[derive(Debug, Clone, Serialize)]
 #[serde(rename_all = "camelCase")]
@@ -94,6 +97,7 @@ pub async fn toggle_startup_item(
     }
 }
 
+#[cfg(target_os = "windows")]
 fn with_trust(mut item: StartupItem) -> StartupItem {
     let trust_meta = trust::quick_trust_from_path(item.path.as_deref());
     item.signed = trust_meta.signed;
@@ -102,6 +106,7 @@ fn with_trust(mut item: StartupItem) -> StartupItem {
     item
 }
 
+#[cfg(target_os = "windows")]
 fn extract_executable_path(command: &str) -> Option<String> {
     let trimmed = command.trim();
     if trimmed.is_empty() {

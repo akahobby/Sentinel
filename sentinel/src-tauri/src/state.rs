@@ -8,11 +8,9 @@ use std::path::{Path, PathBuf};
 
 #[derive(Debug, Clone)]
 pub struct AppState {
-    pub base_dir: PathBuf,
     pub logs_dir: PathBuf,
     pub reports_dir: PathBuf,
     pub exports_dir: PathBuf,
-    pub data_dir: PathBuf,
     db_path: PathBuf,
 }
 
@@ -61,11 +59,9 @@ impl AppState {
         ensure_dir(&data)?;
 
         let state = Self {
-            base_dir: base,
             logs_dir: logs,
             reports_dir: reports,
             exports_dir: exports,
-            data_dir: data,
             db_path,
         };
 
