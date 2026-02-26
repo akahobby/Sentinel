@@ -1,0 +1,14 @@
+App.xbf
+MainWindow.xbf
+Pages\HistoryPage.xbf
+Pages\OverviewPage.xbf
+Pages\ProcessesPage.xbf
+Pages\ServicesPage.xbf
+Pages\SettingsPage.xbf
+Pages\StartupPage.xbf
+Pages\ToolsPage.xbf
+Pages\ZeroTracePage.xbf
+Resources\Styles\Brushes.xbf
+Resources\Styles\ControlStyles.xbf
+Resources\Styles\Theme.xbf
+Resources\Styles\Typography.xbf

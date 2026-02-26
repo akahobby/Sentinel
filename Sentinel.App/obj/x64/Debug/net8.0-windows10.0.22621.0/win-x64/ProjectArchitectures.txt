@@ -1,0 +1,1 @@
+C:\Users\Administrator\Documents\Sentinal\Sentinel.App\Sentinel.App.csproj;x64

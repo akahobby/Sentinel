@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Package
+  xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+  xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+  xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
+  xmlns:desktop="http://schemas.microsoft.com/appx/manifest/desktop/windows10"
+  IgnorableNamespaces="uap rescap desktop">
+
+  <Identity Name="Sentinel" Publisher="CN=Sentinel" Version="1.0.0.0" />
+
+  <Properties>
+    <DisplayName>Sentinel</DisplayName>
+    <PublisherDisplayName>Sentinel</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+    <Description>Premium Windows 11 Task Manager replacement. Process explorer, startup impact, performance analysis, and system insights.</Description>
+  </Properties>
+
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.22621.0" MaxVersionTested="10.0.26100.0" />
+    <PackageDependency Name="Microsoft.WindowsAppRuntime.1.6" MinVersion="1.6.240822001.0" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" />
+  </Dependencies>
+
+  <Resources>
+    <Resource Language="en-us" />
+  </Resources>
+
+  <Applications>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Sentinel.App.App">
+      <uap:VisualElements
+        DisplayName="Sentinel"
+        Description="Premium Task Manager replacement"
+        Square150x150Logo="Assets\Square150x150Logo.png"
+        Square44x44Logo="Assets\Square44x44Logo.png"
+        BackgroundColor="#202020" />
+      <Extensions>
+        <desktop:Extension Category="windows.protocol">
+          <desktop:Protocol Name="sentinel" />
+        </desktop:Extension>
+      </Extensions>
+    </Application>
+  </Applications>
+
+  <Capabilities>
+    <rescap:Capability Name="runFullTrust" />
+  </Capabilities>
+</Package>

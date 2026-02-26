@@ -1,0 +1,88 @@
+<Window
+    x:Class="Sentinel.App.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:Microsoft.UI.Xaml.Controls"
+    xmlns:NavigationView="using:Microsoft.UI.Xaml.Controls">
+
+    <Grid>
+        <NavigationView:NavigationView
+            x:Name="NavView"
+            IsBackButtonVisible="Collapsed"
+            IsSettingsVisible="True"
+            PaneDisplayMode="Left"
+            OpenPaneLength="260"
+            CompactModeThresholdWidth="640"
+            ExpandedModeThresholdWidth="1024"
+            Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+            <NavigationView:NavigationView.Header>
+                <Grid Height="56" Padding="24,0,16,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Sentinel" VerticalAlignment="Center" Style="{StaticResource TitleTextStyle}" FontSize="22" />
+                    <controls:AutoSuggestBox
+                        x:Name="GlobalSearchBox"
+                        Grid.Column="1"
+                        PlaceholderText="Search processes, services..."
+                        Width="280"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Margin="24,0,0,0" />
+                    <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+                        <Button x:Name="PauseButton">
+                            <ToolTipService.ToolTip>
+                                <ToolTip x:Name="PauseToolTip" Content="Pause live updates (hold Ctrl to pause)" />
+                            </ToolTipService.ToolTip>
+                            <StackPanel Orientation="Horizontal" Spacing="4">
+                                <SymbolIcon x:Name="PauseButtonIcon" Symbol="Pause" />
+                                <TextBlock x:Name="PauseButtonText" Text="Pause" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </Button>
+                        <Border
+                            x:Name="AdminBadge"
+                            Padding="8,4"
+                            CornerRadius="4"
+                            Background="#404040"
+                            VerticalAlignment="Center">
+                            <TextBlock x:Name="AdminBadgeText" Text="Standard" FontSize="12" />
+                        </Border>
+                    </StackPanel>
+                </Grid>
+            </NavigationView:NavigationView.Header>
+
+            <NavigationView:NavigationView.MenuItems>
+                <NavigationView:NavigationViewItem Content="Overview" Tag="Overview">
+                    <NavigationView:NavigationViewItem.Icon>
+                        <SymbolIcon Symbol="ShowResults" />
+                    </NavigationView:NavigationViewItem.Icon>
+                </NavigationView:NavigationViewItem>
+                <NavigationView:NavigationViewItem Content="Processes" Tag="Processes">
+                    <NavigationView:NavigationViewItem.Icon>
+                        <SymbolIcon Symbol="AllApps" />
+                    </NavigationView:NavigationViewItem.Icon>
+                </NavigationView:NavigationViewItem>
+                <NavigationView:NavigationViewItem Content="Startup" Tag="Startup">
+                    <NavigationView:NavigationViewItem.Icon>
+                        <SymbolIcon Symbol="Play" />
+                    </NavigationView:NavigationViewItem.Icon>
+                </NavigationView:NavigationViewItem>
+                <NavigationView:NavigationViewItem Content="Services" Tag="Services">
+                    <NavigationView:NavigationViewItem.Icon>
+                        <SymbolIcon Symbol="Setting" />
+                    </NavigationView:NavigationViewItem.Icon>
+                </NavigationView:NavigationViewItem>
+                <NavigationView:NavigationViewItem Content="Tools" Tag="Tools">
+                    <NavigationView:NavigationViewItem.Icon>
+                        <SymbolIcon Symbol="Repair" />
+                    </NavigationView:NavigationViewItem.Icon>
+                </NavigationView:NavigationViewItem>
+            </NavigationView:NavigationView.MenuItems>
+
+            <Frame x:Name="ContentFrame" />
+        </NavigationView:NavigationView>
+    </Grid>
+</Window>

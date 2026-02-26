@@ -1,0 +1,12 @@
+C:\Users\Administrator\Documents\Sentinal\Sentinel.Core\bin\Debug\net8.0\Sentinel.Core.deps.json
+C:\Users\Administrator\Documents\Sentinal\Sentinel.Core\bin\Debug\net8.0\Sentinel.Core.dll
+C:\Users\Administrator\Documents\Sentinal\Sentinel.Core\bin\Debug\net8.0\Sentinel.Core.pdb
+C:\Users\Administrator\Documents\Sentinal\Sentinel.Core\obj\Debug\net8.0\Sentinel.Core.csproj.AssemblyReference.cache
+C:\Users\Administrator\Documents\Sentinal\Sentinel.Core\obj\Debug\net8.0\Sentinel.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Administrator\Documents\Sentinal\Sentinel.Core\obj\Debug\net8.0\Sentinel.Core.AssemblyInfoInputs.cache
+C:\Users\Administrator\Documents\Sentinal\Sentinel.Core\obj\Debug\net8.0\Sentinel.Core.AssemblyInfo.cs
+C:\Users\Administrator\Documents\Sentinal\Sentinel.Core\obj\Debug\net8.0\Sentinel.Core.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Documents\Sentinal\Sentinel.Core\obj\Debug\net8.0\Sentinel.Core.dll
+C:\Users\Administrator\Documents\Sentinal\Sentinel.Core\obj\Debug\net8.0\refint\Sentinel.Core.dll
+C:\Users\Administrator\Documents\Sentinal\Sentinel.Core\obj\Debug\net8.0\Sentinel.Core.pdb
+C:\Users\Administrator\Documents\Sentinal\Sentinel.Core\obj\Debug\net8.0\ref\Sentinel.Core.dll

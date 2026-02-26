@@ -1,0 +1,29 @@
+﻿<Application
+    x:Class="Sentinel.App.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="using:Sentinel.App.Converters"
+    RequestedTheme="Dark">
+
+    <Application.Resources>
+        <ResourceDictionary>
+            <converters:SeverityToColorConverter x:Key="SeverityToColorConverter" />
+            <converters:StringToVisibilityConverter x:Key="StringToVisibilityConverter" />
+            <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+            <converters:BytesToSizeConverter x:Key="BytesToSizeConverter" />
+            <converters:UsageFormatConverter x:Key="UsageFormatCpu" Type="Cpu" />
+            <converters:UsageFormatConverter x:Key="UsageFormatMemory" Type="Memory" />
+            <converters:UsageFormatConverter x:Key="UsageFormatGpu" Type="Gpu" />
+            <converters:UsageFormatConverter x:Key="UsageFormatNetwork" Type="Network" />
+            <ResourceDictionary.MergedDictionaries>
+                <!-- WinUI default theme first so controls find TabView/NavigationView resources -->
+                <ResourceDictionary Source="ms-appx:///Microsoft.UI.Xaml/Themes/themeresources.xaml" />
+                <ResourceDictionary Source="Resources/Styles/Theme.xaml" />
+                <ResourceDictionary Source="Resources/Styles/Typography.xaml" />
+                <ResourceDictionary Source="Resources/Styles/Brushes.xaml" />
+                <ResourceDictionary Source="Resources/Styles/ControlStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
+
